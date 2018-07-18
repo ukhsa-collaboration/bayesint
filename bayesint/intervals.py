@@ -79,7 +79,7 @@ def eqt_int_frac(p_val, c_val, m_val, n_val, pri_val, frac_type, signif, ans):
         frac = odds_rat(p_val, c_val, m_val, n_val)
     else:
         raise ValueError('frac_type must be "risk" or "odds"')
-    dis = distri_frac(p_val, c_val, m_val, n_val, pri_val)
+    dis = distri_frac(p_val, c_val, m_val, n_val, pri_val, frac_type)
     dis = dis.subs({alpha: C + PI_1, b: N - C + PI_2,
                     theta: P + PI_3, phi: M - P + PI_4})
     low_temp = dis - (signif / 2)
