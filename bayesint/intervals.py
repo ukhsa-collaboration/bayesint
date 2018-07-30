@@ -171,8 +171,8 @@ def hpd_int_frac(p_val, c_val, m_val, n_val, pri_val, frac_type, signif, minimis
     if minimisation_start is None:
         minimisation_start = (max(0, frac - 0.2), frac + 0.2)
 
-    dens = densi_frac(p_val, c_val, m_val, n_val, pri_val)
-    dis = distri_frac(p_val, c_val, m_val, n_val, pri_val)
+    dens = densi_frac(p_val, c_val, m_val, n_val, pri_val, frac_type)
+    dis = distri_frac(p_val, c_val, m_val, n_val, pri_val, frac_type)
     #Generate the density and distribution at the upper and lower confidence values
     dens_lower = dens.subs({z: l})
     dens_upper = dens.subs({z: u})
