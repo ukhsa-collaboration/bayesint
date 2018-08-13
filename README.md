@@ -39,8 +39,8 @@ rel_risk(56, 126, 366, 354)
 and to obtain the equal-tailed quantile interval for the data given in the contingency table run
 
 ```python
-from bayesint import eqt_frac_int
-eqt_frac_int(56, 126, 366, 354, (0, 0, 0, 0), "risk", 0.05, "estim")
+from bayesint import eqt_int_frac
+eqt_int_frac(56, 126, 366, 354, (0, 0, 0, 0), "risk", 0.05, "estim")
 # (236/549, 0.184135819539239, 0.667343920284484)
 ```
 
