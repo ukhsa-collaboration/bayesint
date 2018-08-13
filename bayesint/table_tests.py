@@ -47,9 +47,9 @@ def chi_sq_stat(p_val, c_val, m_val, n_val):
     Examples
     ========
 
-    >>> chi_sq_stat(56, 126, 366, 354)
+    >>> chi_sq_stat(56, 126, 366, 354).evalf()
     39.232115997016614
-    >>> chi_sq_stat(25, 108, 123, 313)
+    >>> chi_sq_stat(25, 108, 123, 313).evalf()
     8.374694230627874
 
     """
@@ -100,9 +100,9 @@ def chi_sq_test(p_val, c_val, m_val, n_val, signif):
     Examples
     ========
 
-    >>> chi_sq_test(56, 126, 366, 354)
+    >>> chi_sq_test(56, 126, 366, 354, 0.05)
     (3.762993555770853e-10, True)
-    >>> chi_sq_test(25, 108, 123, 313)
+    >>> chi_sq_test(25, 108, 123, 313, 0.05)
     (0.0038048156707230687, True)
 
     """
@@ -111,6 +111,6 @@ def chi_sq_test(p_val, c_val, m_val, n_val, signif):
         raise TypeError('Count inputs must be integers')
     if not 0 <= signif <= 1:
         raise ValueError('Significance level must be between 0 and 1')
-    stat = chi_sq_stat(p_val, c_val, m_val, n_val).evalf()
-    p_val = chi2.sf(stat, 1)
-    return p_val, p_val < signif
+    stat = chi_sq_stat(p_val, c_val, m_val, n_val)
+    prob = chi2.sf(stat, 1)
+    return prob, prob < signif
