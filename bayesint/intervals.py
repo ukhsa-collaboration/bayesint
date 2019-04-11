@@ -214,6 +214,7 @@ def hpd_int_frac(p_val, c_val, m_val, n_val, pri_val, frac_type, signif, minimis
                                x0=np.array(minimisation_start),
                                bounds=[(0.000000000001, None), (0, None)],
                                method='L-BFGS-B',
+                               options={'eps': 1E-10}
                                #approx_grad=True,
                                #maxfun=400
                               )
