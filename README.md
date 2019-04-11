@@ -2,7 +2,7 @@
 
 # bayesint
 
-This repository includes the Python code for calculating Bayesian credible interval of ratios of independent beta distributions. It has been used in *Methods for calculating credible intervals for ratios of beta distributions with application to relative risks of premature death during the second plague pandemic* (submitted)
+This repository includes the Python code for calculating Bayesian credible interval of ratios of independent beta distributions. It has been used in [*Methods for calculating credible intervals for ratios of beta distributions with application to relative risks of premature death during the second plague pandemic*](https://doi.org/10.1371/journal.pone.0211633)
 
 ## Getting Started
 
