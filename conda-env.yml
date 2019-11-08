@@ -1,0 +1,7 @@
+name: pygom
+channels:
+  - conda-forge
+dependencies:
+  - numpy
+  - scipy
+  - sympy
