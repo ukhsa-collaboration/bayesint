@@ -254,6 +254,7 @@ def frac_ints(p_val, c_val, m_val, n_val, pri_val, frac_type, signif):
                 given in the order: pi_1, pi_2, pi_3, pi_4
     frac_type : Desired ratio - relative risk ("risk") or odds ratio ("odds")
     signif : Significance cut off desired
+    int_type : Desired interval type - highest posterior density ("hpd"), equal-tailed ("equal") or ("both")
 
     Returns
     =======
@@ -265,6 +266,8 @@ def frac_ints(p_val, c_val, m_val, n_val, pri_val, frac_type, signif):
 
     TypeError
         Count inputs must be integers
+    ValueError
+        int_type must be "hpd" or "equal" or "both"
 
     See Also
     =======
@@ -274,7 +277,7 @@ def frac_ints(p_val, c_val, m_val, n_val, pri_val, frac_type, signif):
 
     Examples
 
-    >>> frac_ints(56, 126, 366, 354, (0, 0, 0, 0), "risk", 0.05)
+    >>> frac_ints(56, 126, 366, 354, (0, 0, 0, 0), "risk", 0.05, "both")
     ((236/549, 0.184135819539239, 0.667343920284484),
     (236/549, 0.18274558146543513, 0.84884394841446875))
 
@@ -282,5 +285,16 @@ def frac_ints(p_val, c_val, m_val, n_val, pri_val, frac_type, signif):
     if not (isinstance(p_val, int) and isinstance(c_val, int) and
             isinstance(m_val, int) and isinstance(n_val, int)):
         raise TypeError('Count inputs must be integers')
-    args = (p_val, c_val, m_val, n_val, pri_val, frac_type, signif)
-    return eqt_int_frac(*args, ans="estim"), hpd_int_frac(*args, minimisation_start=None)
+    args = (p_val, c_val, m_val, n_val, pri_val, frac_type, signif, int_type)
+    
+    if int_type == 'both':
+        return eqt_int_frac(*args, ans="estim"), hpd_int_frac(*args, minimisation_start=None)
+        
+    elif int_type == 'equal':
+        return eqt_int_frac(*args, ans="estim")
+        
+    elif int_type == 'hpd':
+        return hpd_int_frac(*args, minimisation_start=None)
+    
+    else:
+        raise ValueError('int_type must be "hpd" or "equal" or "both"')
